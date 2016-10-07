@@ -11,7 +11,7 @@ export const WineList = React.createClass({
         <h2 className="center-align">Wines</h2>
         <div className="collection">
           {this.props.wines.map(wine =>
-            <a key={wine.id} href="#!" onClick={e => this.props.onSelectWine(wine.id)} className={['collection-item', wine === this.props.wine ? 'active' : ''].join(' ')}>{wine.name}</a>
+            <a key={wine.id} href="#!" onClick={e => this.props.onSelectWine(wine.id)} className={['collection-item', wine.id === this.props.wine.id ? 'active' : ''].join(' ')}>{wine.name}</a>
           )}
         </div>
       </div>
