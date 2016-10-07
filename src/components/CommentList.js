@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Comment } from '.';
 import './CommentList.css';
 
 export const CommentList = React.createClass({
@@ -6,8 +7,8 @@ export const CommentList = React.createClass({
     return (
       <div>
         <h5>Comments</h5>
-        <p>This wine is awesome!</p>
-        <p>This is too expensive :-(</p>
+        <Comment label="This wine is awesome!" />
+        <Comment label="This is too expensive :-(" />
       </div>
     );
   }

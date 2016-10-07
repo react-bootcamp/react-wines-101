@@ -4,9 +4,7 @@ import './Comment.css';
 export const Comment = React.createClass({
   render() {
     return (
-      <div>
-        Comment
-      </div>
+      <p>{this.props.label}</p>
     );
   }
 });
