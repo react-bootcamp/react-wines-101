@@ -1,16 +1,76 @@
 import React, { PropTypes } from 'react';
 import './WineApp.css';
-import { Regions, WineList, Wine } from '.';
+import { Regions, WineList, Wine, CommentModal } from '.';
+import * as WinesService from '../services/Wines';
+
+const host = 'https://wines-api.herokuapp.com';
 
 export const WineApp = React.createClass({
+  getInitialState() {
+    return {
+      commentModalOpen: false,
+      regions: [],
+      selectedRegion: null,
+      wines: [],
+      selectedWine: null,
+    };
+  },
+  componentDidMount() {
+    WinesService.fetchRegions().then(regions => {
+      this.setState({
+        regions,
+        selectedRegion: regions[0],
+      }, () => {
+        WinesService.fetchWinesFrom(this.state.selectedRegion).then(wines => {
+          this.setState({
+            wines,
+            selectedWine: wines[0],
+          });
+        });
+      });
+    });
+  },
+  closeCommentModal() {
+    this.setState({ commentModalOpen: false });
+  },
+  openCommentModal() {
+    this.setState({ commentModalOpen: true });
+  },
+  onSelectRegion(region) {
+    WinesService.fetchWinesFrom(region).then(wines => {
+      this.setState({ selectedRegion: region, wines });
+    });
+  },
+  onSelectWine(id) {
+    WinesService.fetchWine(id).then(wine => {
+      this.setState({ selectedWine: wine});
+    });
+  },
   render() {
     return (
       <div className="container">
         <h1 className="center-align">Open Wine Database</h1>
         <div className="row">
-          <Regions />
-          <WineList />
-          <Wine />
+
+          <Regions
+            onSelectRegion={this.onSelectRegion}
+            regions={this.state.regions}
+            region={this.state.selectedRegion} />
+
+          <WineList
+            onSelectWine={this.onSelectWine}
+            wines={this.state.wines}
+            wine={this.state.selectedWine} />
+
+          <Wine
+            host={host}
+            wine={this.state.selectedWine}
+            openCommentModal={this.openCommentModal} />
+
+          <CommentModal
+            isOpen={this.state.commentModalOpen} 
+            closeCommentModal={this.closeCommentModal} />
+
         </div>
       </div>
     );

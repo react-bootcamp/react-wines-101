@@ -5,7 +5,9 @@ export const CommentList = React.createClass({
   render() {
     return (
       <div>
-        CommentList
+        <h5>Comments</h5>
+        <p>This wine is awesome!</p>
+        <p>This is too expensive :-(</p>
       </div>
     );
   }
