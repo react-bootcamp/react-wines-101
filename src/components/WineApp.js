@@ -53,6 +53,9 @@ export const WineApp = React.createClass({
         <div className="center-align">
           You can read the Wines API documentation at <a href="https://wines-api.herokuapp.com" target="_blank">https://wines-api.herokuapp.com</a>
         </div>
+        <div className="center-align">
+          You can play with the Wines API <a href="http://petstore.swagger.io/?url=https://react-bootcamp.github.io/react-wines/swagger.json" target="_blank">here</a>
+        </div>
         <div className="row">
 
           <Regions
