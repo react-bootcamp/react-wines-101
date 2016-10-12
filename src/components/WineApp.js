@@ -50,6 +50,9 @@ export const WineApp = React.createClass({
     return (
       <div className="container">
         <h1 className="center-align">Open Wine Database</h1>
+        <div className="center-align">
+          You can read the Wines API documentation at <a href="https://wines-api.herokuapp.com" target="_blank">https://wines-api.herokuapp.com</a>
+        </div>
         <div className="row">
 
           <Regions
