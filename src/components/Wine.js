@@ -22,10 +22,10 @@ export const Wine = React.createClass({
               <p><b>Region:</b> {this.props.wine.appellation.region}</p>
               <p><b>Color:</b> {this.props.wine.type}</p>
               <p><b>Grapes:</b> {this.props.wine.grapes.join(', ')}</p>
-              <CommentList />
+              <CommentList wine={this.props.wine} />
             </div>
             <div className="card-action">
-              <LikeButton />
+              <LikeButton wine={this.props.wine} />
               <CommentButton openCommentModal={this.props.openCommentModal} />
             </div>
           </div>

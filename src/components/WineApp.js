@@ -68,6 +68,7 @@ export const WineApp = React.createClass({
             openCommentModal={this.openCommentModal} />
 
           <CommentModal
+            wine={this.state.selectedWine}
             isOpen={this.state.commentModalOpen} 
             closeCommentModal={this.closeCommentModal} />
 
