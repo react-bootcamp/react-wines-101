@@ -5,6 +5,8 @@
         "version": "1.0.0",
         "description": "Wines API"
     },
+    "host": "https://wines-api.herokuapp.com",
+    "basePath":"/api",
     "paths": {
         "/comments": {
             "get": {
