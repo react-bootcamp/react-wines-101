@@ -1,11 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Loader } from '.';
 import * as WinesService from '../services/Wines';
-import './LikeButton.css';
 
 export const LikeButton = React.createClass({
   getInitialState() {
     return {
+      loading: false,
       liked: null
     };
   },
@@ -18,8 +18,10 @@ export const LikeButton = React.createClass({
     });
   },
   updateLike() {
-    return WinesService.fetchLiked(this.props.wine.id).then(liked => {
-      this.setState({ liked: liked.like });
+    this.setState({ loading: true }, () => {
+      return WinesService.fetchLiked(this.props.wine.id).then(liked => {
+        this.setState({ liked: liked.like, loading: false });
+      });
     });
   },
   toggle(e) {
@@ -37,7 +39,7 @@ export const LikeButton = React.createClass({
   render() {
     return (
       <a className="waves-effect waves-teal btn-flat" onClick={this.toggle}>
-        {this.state.liked === null && (<Loader />)}
+        {this.state.loading && (<Loader />)}
         {this.state.liked === true && (<span>Like <i className="material-icons left">thumb_up</i></span>)}
         {this.state.liked === false && (<span>Unlike <i className="material-icons left">thumb_down</i></span>)}
       </a>

@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import './Regions.css';
+import React from 'react';
 
 export const Regions = React.createClass({
   onSelectRegion(e, region) {
@@ -12,9 +11,9 @@ export const Regions = React.createClass({
         <h2 className="center-align">Regions</h2>
         <div className="collection">
           {this.props.regions.map(region =>
-            <a key={region} 
-              href="#!" 
-              onClick={e => this.onSelectRegion(e, region)} 
+            <a key={region}
+              href="#!"
+              onClick={e => this.onSelectRegion(e, region)}
               className={['collection-item', region === this.props.region ? 'active' : ''].join(' ')}>
                 {region}
             </a>

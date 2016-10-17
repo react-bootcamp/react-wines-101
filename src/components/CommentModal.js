@@ -1,7 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import * as WinesService from '../services/Wines';
-import { Loader } from '.';
-import './CommentModal.css';
 
 export const CommentModal = React.createClass({
   getInitialState() {

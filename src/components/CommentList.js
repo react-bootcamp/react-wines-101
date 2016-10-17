@@ -1,11 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Comment, Loader } from '.';
 import * as WinesService from '../services/Wines';
-import './CommentList.css';
 
 export const CommentList = React.createClass({
   getInitialState() {
     return {
+      loading: false,
       comments: []
     };
   },
@@ -18,16 +18,18 @@ export const CommentList = React.createClass({
     });
   },
   updateList() {
-    return WinesService.fetchComments(this.props.wine.id).then(comments => {
-      this.setState({ comments });
+    this.setState({ loading: true }, () => {
+      return WinesService.fetchComments(this.props.wine.id).then(comments => {
+        this.setState({ comments, loading: false });
+      });
     });
   },
   render() {
     return (
       <div>
-        <h5>Comments</h5>
-        {this.state.comments.length === 0 && <Loader />}
-        {this.state.comments.map(comment => <Comment key={comment.date} comment={comment} />)}
+        {this.state.comments.length > 0 && <h5>Comments</h5>}
+        {this.state.loading && <Loader />}
+        {!this.state.loading && this.state.comments.map(comment => <Comment key={comment.date} comment={comment} />)}
       </div>
     );
   }

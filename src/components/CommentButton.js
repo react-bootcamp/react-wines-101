@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import './CommentButton.css';
+import React from 'react';
 
 export const CommentButton = React.createClass({
   render() {

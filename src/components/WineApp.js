@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import './WineApp.css';
+import React from 'react';
 import { Regions, WineList, Wine, CommentModal } from '.';
 import * as WinesService from '../services/Wines';
 

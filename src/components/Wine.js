@@ -1,6 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { LikeButton, CommentButton, CommentList } from '.';
-import './Wine.css';
 
 export const Wine = React.createClass({
   render() {
@@ -12,7 +11,7 @@ export const Wine = React.createClass({
         <h2 className="center-align">Wine details</h2>
         <div className="card horizontal">
           <div className="card-image">
-            <img className="responsive-img wine-detail-image" src={`${this.props.host}/api/wines/${this.props.wine.id}/image`} />
+            <img className="responsive-img wine-detail-image" alt="Wine bottle pic" src={`${this.props.host}/api/wines/${this.props.wine.id}/image`} />
           </div>
           <div className="card-stacked">
             <div className="card-content">

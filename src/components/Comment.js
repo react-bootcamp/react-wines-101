@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import './Comment.css';
 
 export const Comment = React.createClass({
