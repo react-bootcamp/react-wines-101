@@ -1,5 +1,11 @@
 # Classic patterns with React
 
+## A basic component
+
+## Mount a component into the dom
+
+## A stateful component
+
 ## Component styling
 
 ### Classic styling
