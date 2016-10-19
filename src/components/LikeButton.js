@@ -40,8 +40,8 @@ export const LikeButton = React.createClass({
     return (
       <a className="waves-effect waves-teal btn-flat" onClick={this.toggle}>
         {this.state.loading && (<Loader />)}
-        {this.state.liked === true && (<span>Like <i className="material-icons left">thumb_up</i></span>)}
-        {this.state.liked === false && (<span>Unlike <i className="material-icons left">thumb_down</i></span>)}
+        {this.state.liked === true && (<span>Unlike <i className="material-icons left">thumb_down</i></span>)}
+        {this.state.liked === false && (<span>Like <i className="material-icons left">thumb_up</i></span>)}
       </a>
     );
   }
