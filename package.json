@@ -2,7 +2,7 @@
   "name": "react-wines",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://react-bootcamp.github.io/react-wines/",
+  "homepage": "https://react-bootcamp.github.io/react-wines-101/",
   "devDependencies": {
     "react-scripts": "0.6.1"
   },
