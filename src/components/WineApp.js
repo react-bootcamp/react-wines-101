@@ -37,7 +37,7 @@ export const WineApp = React.createClass({
   },
   onSelectRegion(region) {
     WinesService.fetchWinesFrom(region).then(wines => {
-      this.setState({ selectedRegion: region, wines });
+      this.setState({ selectedRegion: region, wines, selectedWine: wines[0]});
     });
   },
   onSelectWine(id) {

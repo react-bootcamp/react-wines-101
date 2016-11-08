@@ -3,7 +3,7 @@ import { LikeButton, CommentButton, CommentList } from '.';
 
 export const Wine = React.createClass({
   render() {
-    if (this.props.wine === null) {
+    if (!this.props.wine) {
       return null;
     }
     return (

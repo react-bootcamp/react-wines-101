@@ -17,7 +17,7 @@ export const WineList = React.createClass({
             <a key={wine.id}
               href="#!"
               onClick={e => this.onSelectWine(e, wine.id)}
-              className={['collection-item', wine.id === this.props.wine.id ? 'active' : ''].join(' ')}>
+              className={['collection-item', this.props.wine && (wine.id === this.props.wine.id) ? 'active' : ''].join(' ')}>
                 {wine.name}
             </a>
           )}
