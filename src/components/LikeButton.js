@@ -1,30 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Loader } from '.';
 import * as WinesService from '../services/Wines';
 
-export const LikeButton = React.createClass({
-  getInitialState() {
-    return {
-      loading: false,
-      liked: null
-    };
-  },
+export class LikeButton extends Component {
+
+  state = {
+    loading: false,
+    liked: null
+  };
+
   componentDidMount() {
     this.updateLike();
-  },
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({ liked: null }, () => {
       this.updateLike();
     });
-  },
-  updateLike() {
+  }
+
+  updateLike = () => {
     this.setState({ loading: true }, () => {
       return WinesService.fetchLiked(this.props.wine.id).then(liked => {
         this.setState({ liked: liked.like, loading: false });
       });
     });
-  },
-  toggle(e) {
+  }
+
+  toggle = (e) => {
     e.preventDefault();
     if (this.state.liked) {
       this.setState({ liked: !this.state.liked }, () => {
@@ -35,7 +38,8 @@ export const LikeButton = React.createClass({
         WinesService.likeWine(this.props.wine.id).then(() => this.updateLike());
       });
     }
-  },
+  }
+  
   render() {
     return (
       <a className="waves-effect waves-teal btn-flat" onClick={this.toggle}>
@@ -45,4 +49,4 @@ export const LikeButton = React.createClass({
       </a>
     );
   }
-});
+}

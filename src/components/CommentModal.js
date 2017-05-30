@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import * as WinesService from '../services/Wines';
 
-export const CommentModal = React.createClass({
-  getInitialState() {
-    return {
-      comment: ''
-    };
-  },
+export class CommentModal extends Component {
+
+  state = {
+    comment: ''
+  };
+
   componentDidMount() {
     if (this.props.isOpen) {
       window.$(this.modalNode).openModal();
     }
-  },
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.isOpen !== this.props.isOpen) {
       if (nextProps.isOpen) {
@@ -21,21 +22,25 @@ export const CommentModal = React.createClass({
         window.$(this.modalNode).closeModal();
       }
     }
-  },
+  }
+
   componentWillUnmount() {
     window.$(this.modalNode).closeModal();
-  },
-  onSubmit(e) {
+  }
+
+  onSubmit = (e) => {
     e.preventDefault();
     const comment = this.state.comment;
     this.setState({ comment: '' });
     WinesService.commentWine(this.props.wine.id, comment).then(() => {
       this.props.closeCommentModal();
     });
-  },
-  onCommentChange(e) {
+  }
+
+  onCommentChange = (e) => {
     this.setState({ comment: e.target.value });
-  },
+  }
+  
   render() {
     return (
       <div ref={ref => this.modalNode = ref} className="modal">
@@ -57,4 +62,4 @@ export const CommentModal = React.createClass({
       </div>
     );
   }
-});
+}

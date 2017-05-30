@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Regions, WineList, Wine, CommentModal } from '.';
 import * as WinesService from '../services/Wines';
 
 const host = 'https://wines-api.herokuapp.com';
 
-export const WineApp = React.createClass({
-  getInitialState() {
-    return {
-      commentModalOpen: false,
-      regions: [],
-      selectedRegion: null,
-      wines: [],
-      selectedWine: null,
-    };
-  },
+export class WineApp extends Component {
+
+  state = {
+    commentModalOpen: false,
+    regions: [],
+    selectedRegion: null,
+    wines: [],
+    selectedWine: null,
+  };
+
   componentDidMount() {
     WinesService.fetchRegions().then(regions => {
       this.setState({
@@ -28,23 +28,28 @@ export const WineApp = React.createClass({
         });
       });
     });
-  },
-  closeCommentModal() {
+  }
+
+  closeCommentModal = () => {
     this.setState({ commentModalOpen: false });
-  },
-  openCommentModal() {
+  };
+
+  openCommentModal = () => {
     this.setState({ commentModalOpen: true });
-  },
-  onSelectRegion(region) {
+  };
+
+  onSelectRegion = (region) => {
     WinesService.fetchWinesFrom(region).then(wines => {
       this.setState({ selectedRegion: region, wines, selectedWine: wines[0]});
     });
-  },
-  onSelectWine(id) {
+  };
+
+  onSelectWine = (id) => {
     WinesService.fetchWine(id).then(wine => {
       this.setState({ selectedWine: wine});
     });
-  },
+  }
+
   render() {
     return (
       <div className="container">
@@ -78,4 +83,4 @@ export const WineApp = React.createClass({
       </div>
     );
   }
-});
+}

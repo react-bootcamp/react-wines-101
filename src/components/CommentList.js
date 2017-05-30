@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Comment, Loader } from '.';
 import * as WinesService from '../services/Wines';
 
-export const CommentList = React.createClass({
-  getInitialState() {
-    return {
-      loading: false,
-      comments: []
-    };
-  },
+export class CommentList extends Component {
+
+  state = {
+    loading: false,
+    comments: []
+  };
+
   componentDidMount() {
     this.updateList();
-  },
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({ comments: [] }, () => {
       this.updateList();
     });
-  },
-  updateList() {
+  }
+
+  updateList = () => {
     this.setState({ loading: true }, () => {
       return WinesService.fetchComments(this.props.wine.id).then(comments => {
         this.setState({ comments, loading: false });
       });
     });
-  },
+  }
+
   render() {
     return (
       <div>
@@ -33,4 +36,4 @@ export const CommentList = React.createClass({
       </div>
     );
   }
-});
+}

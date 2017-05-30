@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Comment.css';
 
-export const Comment = React.createClass({
+export class Comment extends Component {
   render() {
     return (
       <p className="comment" data-title={this.props.comment.title} data-date={this.props.comment.date}>
@@ -9,4 +9,4 @@ export const Comment = React.createClass({
       </p>
     );
   }
-});
+}

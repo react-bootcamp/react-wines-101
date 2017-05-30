@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export const Regions = React.createClass({
-  onSelectRegion(e, region) {
+export class Regions extends Component {
+
+  onSelectRegion = (e, region) => {
     e.preventDefault();
     this.props.onSelectRegion(region);
-  },
+  }
+
   render() {
     return (
       <div className="col s12 m6 l3">
@@ -22,4 +24,4 @@ export const Regions = React.createClass({
       </div>
     );
   }
-});
+}

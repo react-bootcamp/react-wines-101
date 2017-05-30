@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export const WineList = React.createClass({
-  onSelectWine(e, wineId) {
+export class WineList extends Component {
+
+  onSelectWine = (e, wineId) => {
     e.preventDefault();
     this.props.onSelectWine(wineId);
-  },
+  };
+
   render() {
     if (this.props.region === null) {
       return null;
@@ -25,4 +27,4 @@ export const WineList = React.createClass({
       </div>
     );
   }
-});
+}

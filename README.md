@@ -13,5 +13,5 @@ or if you use `yarn`
 
 ```sh
 yarn install
-yarn run start
+yarn start
 ```

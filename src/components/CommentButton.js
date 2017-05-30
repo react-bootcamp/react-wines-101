@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export const CommentButton = React.createClass({
+export class CommentButton extends Component {
   render() {
     return (
       <a className="waves-effect waves-teal btn-flat" onClick={this.props.openCommentModal}>
@@ -8,4 +8,4 @@ export const CommentButton = React.createClass({
       </a>
     );
   }
-});
+}

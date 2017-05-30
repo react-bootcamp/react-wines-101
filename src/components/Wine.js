@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { LikeButton, CommentButton, CommentList } from '.';
 
-export const Wine = React.createClass({
+export class Wine extends Component {
   render() {
     if (!this.props.wine) {
       return null;
@@ -32,4 +32,4 @@ export const Wine = React.createClass({
       </div>
     );
   }
-});
+}
