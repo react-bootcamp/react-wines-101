@@ -3,10 +3,9 @@ import { Loader } from '.';
 import * as WinesService from '../services/Wines';
 
 export class LikeButton extends Component {
-
   state = {
     loading: false,
-    liked: null
+    liked: null,
   };
 
   componentDidMount() {
@@ -25,9 +24,9 @@ export class LikeButton extends Component {
         this.setState({ liked: liked.like, loading: false });
       });
     });
-  }
+  };
 
-  toggle = (e) => {
+  toggle = e => {
     e.preventDefault();
     if (this.state.liked) {
       this.setState({ liked: !this.state.liked }, () => {
@@ -38,14 +37,22 @@ export class LikeButton extends Component {
         WinesService.likeWine(this.props.wine.id).then(() => this.updateLike());
       });
     }
-  }
-  
+  };
+
   render() {
     return (
       <a className="waves-effect waves-teal btn-flat" onClick={this.toggle}>
-        {this.state.loading && (<Loader />)}
-        {this.state.liked === true && (<span>Unlike <i className="material-icons left">thumb_down</i></span>)}
-        {this.state.liked === false && (<span>Like <i className="material-icons left">thumb_up</i></span>)}
+        {this.state.loading && <Loader />}
+        {this.state.liked === true && (
+          <span>
+            Unlike <i className="material-icons left">thumb_down</i>
+          </span>
+        )}
+        {this.state.liked === false && (
+          <span>
+            Like <i className="material-icons left">thumb_up</i>
+          </span>
+        )}
       </a>
     );
   }

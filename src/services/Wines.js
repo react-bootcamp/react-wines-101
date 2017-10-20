@@ -37,10 +37,10 @@ export function likeWine(id) {
     method: 'POST',
     // credentials: 'include',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ like: true })
+    body: JSON.stringify({ like: true }),
   });
 }
 
@@ -51,10 +51,10 @@ export function unlikeWine(id) {
     method: 'POST',
     // credentials: 'include',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ like: false })
+    body: JSON.stringify({ like: false }),
   });
 }
 
@@ -65,9 +65,9 @@ export function commentWine(id, content) {
     method: 'POST',
     // credentials: 'include',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ title: 'Auto Generated Title', content })
+    body: JSON.stringify({ title: 'Auto Generated Title', content }),
   });
 }
